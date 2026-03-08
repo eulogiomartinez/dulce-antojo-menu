@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Dulce Antojo</title>
+  <style>
+    :root {
+  --naranja: #c97a2b;  
+  --naranja2: #ffb703; 
+  --fondo: #fff3e8;    
+    }
+
+    .modo-btn {
+  position: absolute;
+  right: 16px;
+  top: 20%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  transition: transform 0.2s ease;
+  z-index: 500;  
+}
+
+
+.modo-btn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Arial, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      padding-top: 72px;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--naranja), var(--naranja2));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      justify-content: center;
+    }
+
+    header.scrolled {
+  background: rgba(201, 122, 43, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+    .logo-header {
+  position: absolute;
+  left: 16px; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px; 
+  height: auto;
+}
+
+    .menu {
+  padding: 16px;
+  width: 100%;
+}
+
+    .postre {
+  background: linear-gradient(180deg, #ffffff, #fff6ee);
+  border: 1px solid rgba(255, 196, 122, 0.45);
+  backdrop-filter: blur(2px);
+  padding: 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+  position: relative;
+  transition: 
+    transform .25s ease, 
+    box-shadow .25s ease, 
+    border-color .25s ease,
+    background 0.4s ease;
+}
+
+   .filtro-visual {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 190, 150, 0.20);
+  pointer-events: none;
+  z-index: 900;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.descanso .filtro-visual {
+  opacity: 1;
+}
+ 
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ffb703;
+  color: #7a3f00;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+    .postre img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      transition: transform .2s ease;
+    }
+    
+    .postre img:active {
+  transform: scale(0.98);
+    }
+
+    .postre h3 {
+      margin: 6px 0 4px;
+      font-size: 1.1rem;
+    }
+
+    .postre p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #666;
+     }
+
+    .postre:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: #ffb347;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.22),
+    0 14px 30px rgba(255, 179, 71, 0.25);
+}   
+
+    .precio {
+      margin-top: 10px;
+      font-weight: bold;
+      color: var(--naranja);
+      font-size: 1.2rem;
+    }
+
+    .boton {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--naranja);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .boton:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+   .footer {
+  background: #ffd6e7;
+  color: #7a1f3d;
+  text-align: center;
+  padding: 40px 16px;
+  margin: 0;
+  z-index: 9998;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  flex: 1;
+}
+
+.iconos a {
+  font-size: 30px;
+  margin: 0 18px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.fa-facebook { color: #1877F2; }
+.fa-whatsapp { color: #25D366; }
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: #ffd6e7;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.lightbox-card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.25);
+}
+
+#lightbox-img {
+  max-width: 92vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  display: block;
+}
+
+ .btn-whatsapp {
+  position: fixed;
+  right: 16px;
+  bottom: 5px;
+  z-index: 9999;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 1.6rem;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+}
+
+  .descripcion {
+  display: none;
+  margin-top: 8px;
+  padding: 10px;
+  background: #ffe6f0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.toggle-desc {
+  background: none;
+  border: none;
+  color: #ff5aa5;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flecha {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.postre.abierto .descripcion {
+  display: block;
+}
+
+.postre.abierto .flecha {
+  transform: rotate(180deg);
+}
+
+.like {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+
+.like.activo {
+  background: #ffe4e9;
+  animation: popLike .25s ease;
+}
+@keyframes popLike {
+  0% { transform: scale(.9); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.like.activo::after {
+  content: "✨";
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  font-size: 12px;
+  animation: sparkle .5s ease-out;
+}
+
+@keyframes sparkle {
+  from { transform: scale(.5); opacity: 1; }
+  to   { transform: scale(1.2); opacity: 0; }
+}
+
+.bienvenida {
+  position: fixed;
+  inset: 0;
+  background: #ffd6e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  min-height: 100dvh;
+  width: 100%;
+  transition: background .6s ease, opacity .55s ease, transform .55s ease;
+}
+
+.bienvenida.cerrando {
+  background: transparent;
+  opacity: 0;
+  transform: scale(.85);
+}
+
+.bienvenida .logo {
+width: 120px;
+margin: 0 auto 10px;
+display: block;
+margin: 0 auto 10px;
+}
+
+.bienvenida-card {
+  background: #fff;
+  padding: 28px 22px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: pop .6s ease;
+}
+
+.bienvenida h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #c97a2b;
+}
+
+.bienvenida h2 {
+  margin: 6px 0 16px;
+  font-size: 1.6rem;
+  color: #111;
+  transition: color 0.3s ease;
+}
+
+   .bienvenida h2 span {
+  color: #e11d48;
+  font-weight: bold;
+}
+
+.btn-abrir {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffb703, #c97a2b);
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
+  animation: glow 7s infinite;
+}
+
+.btn-abrir::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.6),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 7s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -120%;
+  }
+
+  40% {
+    left: 120%;
+  }
+
+  100% {
+    left: 120%;
+  }
+}
+
+ @keyframes glow {
+
+  0%{
+    box-shadow: 0 6px 14px rgba(0,0,0,.25);
+  }
+
+  10%{
+    box-shadow:
+      0 6px 14px rgba(0,0,0,.25),
+      0 0 18px rgba(255,183,3,.6);
+  }
+
+  20%{
+    box-shadow: 0 6px 14px rgba(0,0,0,.25);
+  }
+
+  100%{
+    box-shadow: 0 6px 14px rgba(0,0,0,.25);
+  }
+}
+
+.btn-abrir:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.3);
+}
+
+@keyframes pop {
+  from { transform: scale(.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+   @keyframes flashFiltro {
+
+  0%{
+    box-shadow: 0 10px 25px rgba(255,165,0,0.35);
+  }
+
+  50%{
+    box-shadow:
+      0 10px 25px rgba(255,165,0,0.35),
+      0 0 18px rgba(255,165,0,0.7);
+  }
+
+  100%{
+    box-shadow: 0 10px 25px rgba(255,165,0,0.35);
+  }
+
+}
+
+.bienvenida.cerrando {
+  animation: fadeZoomOut .5s ease forwards;
+}
+
+@keyframes fadeZoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(4px);
+  }
+}
+
+.mini-bot {
+  position: fixed;
+  right: 16px;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.mini-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #25D366;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,.25);
+  transition: transform .2s ease;
+}
+
+.mini-btn:active {
+  transform: scale(0.92);
+}
+
+.mini-msg {
+  max-width: 260px;
+  background: #fff;
+  color: #333;
+  padding: 12px 14px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  font-size: .9rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px) scale(.95);
+  pointer-events: none;
+  transition: all .25s ease;
+}
+
+.mini-bot.abierto .mini-msg {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.mini-cta {
+  margin-top: 8px;
+  background: #25D366;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .8rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.mini-btn {
+  animation: latido 2.2s infinite ease-in-out;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 14px 0 20px;
+  flex-wrap: wrap;
+}
+
+.filtro {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #f59e0b;
+  background: white;
+  color: #c97a2b;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+  .filtro.activo {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 165, 0, 0.35);
+  animation: flashFiltro 0.25s ease;
+}
+
+  .filtro:active {
+  transform: scale(0.92);
+}
+
+.postre {
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+  transition: 
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.postre.mostrar {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.postre.oculto {
+  pointer-events: none; /* sigue en el DOM pero no clickeable */
+  opacity: 0;
+  transform: translateY(14px) scale(0.95);
+}
+
+ .postre .badge.especial{
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #fff;
+  font-weight: 700;
+}
+
+.postre:has(.badge.especial){
+  border: 2px solid rgba(245, 158, 11, 0.35);
+}
+
+.postre:has(.badge.especial):hover{
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(245, 158, 11, 0.25);
+}
+
+.contador {
+  margin: 10px 0 18px;
+  font-size: .95rem;
+  color: #7a4a2e;
+  opacity: .9;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.contador.animar {
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+#contador-num {
+  font-weight: 700;
+  color: #ff9f1c;
+}
+
+.filtro.especial {
+  background: linear-gradient(135deg, #ffb703, #ff7a00);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(255, 179, 71, 0.45);
+  border: none;
+}
+
+.filtro.especial:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(255, 179, 71, 0.6);
+}
+
+@keyframes brilloEspecial {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+.badge.personalizado {
+  background: linear-gradient(135deg, #ff5f9e, #ff9f43);
+  color: #fff;
+}
+
+/* Reserva el espacio de la imagen para que no se desacomoden */
+.postre img {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* puedes probar 4 / 5 si tus fotos son más altas */
+  object-fit: cover;
+  display: block;
+}
+
+/* Evita saltos raros durante la animación */
+.postre {
+  will-change: transform, opacity;
+}
+
+.oculto-inicial .postre {
+  opacity: 0;
+  transform: translateY(14px) scale(0.95);
+  pointer-events: none;
+}
+
+.grid-postres {
+  display: grid;
+  grid-template-columns: 1fr;   /* 📱 1 columna en celular */
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .grid-postres {
+    grid-template-columns: repeat(2, 1fr);  /* 💻 2 columnas en compu */
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="bienvenida" class="bienvenida">
+  <div class="bienvenida-card">
+    <img src="img/logo.png" alt="Dulce Antojo" class="logo">
+    
+    <h1>Bienvenidos a</h1>
+    <h2>Repostería <span>Dulce Antojo</span></h2>
+
+    <button id="btn-abrir" class="btn-abrir">
+      🍰 Abrir menú
+    </button>
+  </div>
+</div>
+
+   <header>
+  <img src="img/logo.png" alt="Dulce Antojo" class="logo-header">
+  Dulce Antojo
+</header>
+ 
+      <button id="modo-toggle" class="modo-btn">🌙</button>
+
+       <div class="filtros">
+  <button class="filtro activo" data-filtro="todos">Todos</button>
+  <button class="filtro" data-filtro="pastelitos">Pastelitos</button>
+  <button class="filtro" data-filtro="pays">Pays</button>
+  <button class="filtro especial" data-filtro="ocasiones">
+    🎉 Ocasiones especiales
+  </button>
+</div>
+   
+   <div class="contador" id="contador-resultados">
+  Mostrando <span id="contador-num">0</span> productos
+</div>
+
+  <section class="menu">
+
+   <div class="grid-postres oculto-inicial">
+
+      <div class="postre" data-category="pastelitos">
+      <span class="badge">🔥 Top</span>
+      
+      <button class="like">🤍</button>
+
+      <img src="img/nuez.jpg" alt="Mojadito Dulce De Leche">
+      <h3>dulce de leche</h3>
+
+      <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+      <div class="descripcion">
+       Pastel tres leches con cajeta, betún chantilly, trozitos de nuez natural y un  toque de dulce de leche.
+        </div>
+
+      <div class="precio">$70</div>
+    </div>
+
+     <div class="postre" data-category="ocasiones">
+  <button class="like">🤍</button>
+
+  <img src="img/mango.jpg" alt="Rollo de mango de tres leches">
+  <h3>Rollo de Mango 3 Leches</h3>
+
+  <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+  <div class="descripcion">
+    Rollo esponjoso de tres leches relleno de crema y mango natural, cubierto con chantillí y trocitos de mango. precio varian segun tamaño.
+  </div>
+
+  <div class="precio">$400</div>
+</div>
+  
+      <div class="postre" data-category="ocasiones">
+       <span class="badge personalizado">🎨 Personalizado</span>
+  
+     <button class="like">🤍</button>
+
+  <img src="img/miki.jpg" alt="Pastel personalizado Mini Mickey">
+  <h3>Pastel personalizado Mini Mickey</h3>
+
+  <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+  <div class="descripcion">
+    Pan de vainilla con betún chantillí, rosetas rosas, perlitas comestibles,
+  topper decorativo y relleno de fresa natural.  
+    Diseño Mini Mickey, tamaño y colores a elegir.  
+    <b>Precio varía según tamaño y diseño.</b>
+  </div>
+
+  <div class="precio">Precio según tamaño y diseño</div>
+</div>      
+
+      <div class="postre" data-category="pastelitos">
+  <span class="badge especial">⭐ Especialidad de la casa</span>
+  <button class="like">🤍</button>
+  <img src="img/zanahoria.jpg" alt="Rebanada de Zanahoria">
+  <h3>Rebanada de Zanahoria</h3>
+
+  <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+  <div class="descripcion">
+    Pastel de zanahoria casero, esponjoso, con nuez y betún cremoso de queso crema. Un clásico irresistible.
+  </div>
+
+  <div class="precio">$60</div>
+</div> 
+
+      <div class="postre" data-category="pastelitos">
+      <span class="badge">🔥 Nuevo</span>
+
+      <button class="like">🤍</button>
+
+      <img src="img/chocolate.jpg" alt="Mojadito de 3 leches sabor chocolate">
+      <h3>Mojadito de Chocolate</h3>
+
+      <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+
+      <div class="descripcion">
+       Pastel de 3 leches sabor chocolate con chispas de chocolate y betún de chocolate.
+        </div>
+
+      <div class="precio">$60</div>
+    </div>
+
+     <div class="postre" data-category="ocasiones">
+     <span class="badge personalizado">🎨 Personalizado</span>
+  <button class="like">🤍</button>
+
+  <img src="img/bob.jpg" alt="Pastel temático Bob Esponja">
+
+  <h3>Pastel temático Bob Esponja</h3>
+
+  <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+  <div class="descripcion">
+    Pastel de pan sabor vainilla tradicional, con betún chantilly, decoración temática de Bob Esponja.
+    Ideal para cumpleaños infantiles. El diseño y tamaño pueden variar según el pedido.
+  </div>
+
+  <div class="precio">Precio según tamaño y diseño</div>
+</div>
+
+      <div class="postre" data-category="pays">
+      <span class="badge personalizado">🎨 Personalizado</span>
+ 
+  <button class="like">🤍</button>
+
+  <img src="img/tortuga.jpg" alt="Pay tortuga con chocolate, nuez y caramelo">
+  <h3>Pay Tortuga</h3>
+
+  <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+  <div class="descripcion">
+    Pay cremosito con base crujiente, chocolate, nuez tostada y salsa de caramelo. Un clásico irresistible.
+  </div>
+
+  <div class="precio">Precio variante</div>
+</div>
+
+      <div class="postre" data-category="pastelitos">
+     <button class="like">🤍</button>
+
+  <img src="img/fresa.jpg" alt="Mojadito de 3 leches con fresa">
+  <h3>Mojadito de Fresa</h3>
+
+     <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+
+  <div class="descripcion">
+    Mojadito tres leches con fresas naturales y mermelada de fresa.
+  </div>
+
+  <div class="precio">$60</div>
+</div>
+
+      <div class="postre" data-category="pastelitos">
+     <button class="like">🤍</button>
+
+  <img src="img/oreo.jpg" alt="Mojadito de 3 leches de oreo">
+  <h3>Mojadito de oreo</h3>
+
+     <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+     <div class="descripcion">
+    Pastel de 3 leches sabor vainilla con crema chantilly, galleta Oreo triturada y drizzle de chocolate.
+  </div>
+
+  <div class="precio">$60</div>
+</div>
+
+      <div class="postre" data-category="pays">
+    <button class="like">🤍</button>
+
+  <img src="img/decorado1.jpg" alt="Pay de Fresa">
+  <h3>Pay de Fresa</h3>
+
+     <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+     <div class="descripcion">
+    Pay casero con base crujiente, relleno suave de vainilla, fresas naturales y mermelada de fresa brillante. Ideal para compartir.
+  </div>
+
+  <div class="precio">$350</div>
+</div>
+
+   <div class="postre" data-category="pays"> 
+   <button class="like">🤍</button>
+
+  <img src="img/decorado.jpg" alt="Pay de Fresa">
+  <h3>Pay Decorado</h3>
+
+     <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+     <div class="descripcion">
+    Pay artesanal decorado con crema chantilly y detalles dulces. Ideal para regalar o compartir
+  </div>
+
+  <div class="precio">$60</div>
+</div>
+
+ </section>
+
+     <div class="filtro-visual"></div>
+
+    <div id="lightbox">
+    <div class="lightbox-card">
+      <img id="lightbox-img" src="">
+    </div>
+  </div>
+
+   
+  <footer class="footer">
+    <div class="iconos">
+      <a href="https://www.facebook.com/share/1HA4cKsrD5/" target="_blank">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://wa.me/5218126073158" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+
+    <p class="copy">© 2026 Dulce Antojo</p>
+  </footer>
+
+    <div class="mini-bot">
+  <button class="mini-btn">💬</button>
+  <div class="mini-msg">
+    💛 Horneamos 1 vez por semana <br>
+    Cotizaciones sin compromiso <br>
+    Pasteles a tu gusto y presupuesto
+    <div class="mini-cta" onclick="window.open('https://wa.me/5218126073158','_blank')">
+      👉 Escríbenos por WhatsApp
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>  
+    // descanso visual
+     document.addEventListener("DOMContentLoaded", () => {   
+    const toggleModo = document.getElementById("modo-toggle");
+
+if (toggleModo) {
+
+  // Estado inicial
+  if (localStorage.getItem("modo") === "descanso") {
+    document.body.classList.add("descanso");
+    toggleModo.textContent = "☀️";
+  } else {
+    toggleModo.textContent = "🌙";
+  }
+
+  toggleModo.addEventListener("click", () => {
+
+    document.body.classList.toggle("descanso");
+
+    if (document.body.classList.contains("descanso")) {
+      localStorage.setItem("modo", "descanso");
+      toggleModo.textContent = "☀️";
+    } else {
+      localStorage.removeItem("modo");
+      toggleModo.textContent = "🌙";
+    }
+
+  });
+}  
+ 
+  // Lightbox
+  document.querySelectorAll('.postre img').forEach(img => {
+    img.addEventListener('click', () => {
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').style.display = 'flex';
+    });
+  });
+  document.getElementById('lightbox')?.addEventListener('click', () => {
+    document.getElementById('lightbox').style.display = 'none';
+  });
+
+  // Toggle descripción
+  document.querySelectorAll('.toggle-desc').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.postre').classList.toggle('abierto');
+    });
+  });
+
+  // Likes
+  document.querySelectorAll('.postre').forEach((postre, i) => {
+    const btn = postre.querySelector('.like');
+    if (!btn) return;
+
+    if (localStorage.getItem('like_' + i) === '1') {
+      btn.classList.add('activo');
+      btn.textContent = '❤️';
+    }
+
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('activo');
+      const activo = btn.classList.contains('activo');
+      btn.textContent = activo ? '❤️' : '🤍';
+      localStorage.setItem('like_' + i, activo ? '1' : '0');
+    });
+  });
+
+  // Bienvenida
+  const bienvenida = document.getElementById("bienvenida");
+  const btnAbrir = document.getElementById("btn-abrir");
+
+  if (bienvenida && btnAbrir) {
+    document.body.style.overflow = "hidden";
+
+    btnAbrir.addEventListener("click", () => {
+      if (typeof confetti === "function") {
+        confetti({
+          particleCount: 120,
+          spread: 70,
+          colors: ['#ffb703', '#e11d48', '#ffd6e7', '#c97a2b'],
+          origin: { y: 0.2 }
+        });
+      }
+
+      bienvenida.classList.add("cerrando");
+
+      setTimeout(() => {
+        bienvenida.style.display = "none";
+        document.body.style.overflow = "auto";
+
+        const contenedor = document.querySelector('.grid-postres');
+        contenedor.classList.remove('oculto-inicial');
+
+        document.querySelector('.filtro[data-filtro="todos"]')?.click();
+
+        const cards = document.querySelectorAll(".postre");
+
+// Reinicia estado
+cards.forEach(card => {
+  card.classList.remove("mostrar");
+});
+
+// Cascada más notoria
+cards.forEach((card, i) => {
+  setTimeout(() => {
+    card.classList.add("mostrar");
+  }, i * 200);
+});
+   }, 700);
+    });
+  }
+
+  // Mini bot
+  const miniBot = document.querySelector('.mini-bot');
+  const miniBtn = document.querySelector('.mini-btn');
+  if (miniBot && miniBtn) {
+    miniBtn.addEventListener('click', () => {
+      miniBot.classList.toggle('abierto');
+    });
+  }
+
+  // Filtros + contador
+  const filtros = document.querySelectorAll(".filtro");
+  const postres = document.querySelectorAll(".postre");
+  const contadorWrap = document.getElementById("contador-resultados");
+  const contadorNum = document.getElementById("contador-num");
+
+  filtros.forEach(btn => {
+    btn.addEventListener("click", () => {
+    filtros.forEach(b => b.classList.remove("activo"));
+      btn.classList.add("activo");
+
+      const filtro = btn.dataset.filtro;
+      let visibles = 0;
+
+      let orden = 0;
+
+postres.forEach(postre => {
+  const categoria = postre.dataset.category;
+
+  if (filtro === "todos" || categoria === filtro) {
+    postre.style.display = "block";
+    postre.classList.remove("oculto");
+    postre.classList.remove("mostrar");
+
+    // cascada real solo para visibles
+    setTimeout(() => {
+      postre.classList.add("mostrar");
+    }, orden * 280);
+
+    orden++;
+    visibles++;
+  } else {
+    postre.classList.remove("mostrar");
+    postre.classList.add("oculto");
+    setTimeout(() => postre.style.display = "none", 300);
+  }
+});
+
+      if (contadorNum && contadorWrap) {
+        contadorNum.textContent = visibles;
+        contadorWrap.classList.remove("animar");
+        void contadorWrap.offsetWidth;
+        contadorWrap.classList.add("animar");
+      }
+    });
+  });
+
+});
+
+// ✅ FIX centrado bienvenida en Android
+window.addEventListener("load", () => {
+  const bienvenida = document.getElementById("bienvenida");
+  if (!bienvenida) return;
+
+  bienvenida.style.transform = "translateZ(0)";
+});
+
+         window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  const bienvenida = document.getElementById("bienvenida");
+
+  // Si la bienvenida está visible, no activar blur
+  if (bienvenida && window.getComputedStyle(bienvenida).display !== "none") {
+    header.classList.remove("scrolled");
+    return;
+  }
+
+  if (window.scrollY > 10) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+</script>
+ 
+ </body>
+</html>
