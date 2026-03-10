@@ -151,6 +151,10 @@ body.descanso .filtro-visual {
     0 14px 30px rgba(255, 179, 71, 0.25);
 }   
 
+   .postre:last-child {
+  margin-bottom: 40px;
+}
+
     .precio {
       margin-top: 10px;
       font-weight: bold;
@@ -177,15 +181,15 @@ body.descanso .filtro-visual {
     }
 
    .footer {
-  background: #ffd6e7;
-  color: #7a1f3d;
-  text-align: center;
-  padding: 40px 16px;
-  margin: 0;
-  z-index: 9998;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  }
+background: #ffd6e7;
+color: #7a1f3d;
+text-align: center;
+padding: 40px 16px;
+margin: 0;
+z-index: 9998;
+width: 100vw;
+margin-left: calc(50% - 50vw);
+}
 
 body {
   min-height: 100vh;
@@ -198,10 +202,10 @@ body {
 }
 
 .iconos a {
-  font-size: 30px;
-  margin: 0 18px;
-  text-decoration: none;
-  transition: transform 0.3s ease;
+  font-size: 34px;
+  padding: 10px;
+  margin: 0 12px;
+  display: inline-block;
 }
 
 .fa-facebook { color: #1877F2; }
@@ -252,11 +256,23 @@ body {
 
   .descripcion {
   display: none;
-  margin-top: 8px;
-  padding: 10px;
-  background: #ffe6f0;
-  border-radius: 10px;
+  margin-top: 10px;
+  padding: 14px 16px;
+
+  background: linear-gradient(
+    180deg,
+    #ffeaf3,
+    #ffd6e7
+  );
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 170, 200, 0.35);
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+
   font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .toggle-desc {
@@ -276,8 +292,20 @@ body {
   transition: transform 0.3s ease;
 }
 
-.postre.abierto .descripcion {
+  .postre.abierto .descripcion {
   display: block;
+  animation: abrirDesc 0.25s ease;
+}
+
+@keyframes abrirDesc {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .postre.abierto .flecha {
@@ -495,6 +523,7 @@ margin: 0 auto 10px;
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+  transition: opacity .25s ease;
 }
 
 .mini-btn {
@@ -765,7 +794,7 @@ margin: 0 auto 10px;
 Precio varía según tamaño.
   </div>
 
-  <div class="precio">$400</div>
+  <div class="precio">$450</div>
 </div>
   
       <div class="postre" data-category="ocasiones">
@@ -781,13 +810,10 @@ Precio varía según tamaño.
   </button>
 
   <div class="descripcion">
-    Pastel personalizado estilo Hello Kitty, elaborado con suave pan de vainilla y decorado con betún chantillí.  
-Diseño en tonos rosa con topper temático.  
-Precio varía según tamaño y diseño.  
-    <b>Precio varía según tamaño y diseño.</b>
+    Pastel personalizado estilo Hello Kitty, elaborado con pan de vainilla suave y decorado con betún chantillí en tonos rosa. Incluye topper temático.
   </div>
 
-  <div class="precio">Precio según tamaño y diseño</div>
+  <div class="precio">Cotización según tamaño y diseño</div>
 </div>      
 
       <div class="postre" data-category="pastelitos">
@@ -809,7 +835,7 @@ Precio varía según tamaño y diseño.
 
       <div class="postre" data-category="pastelitos">
       <span class="badge">🔥 Nuevo</span>
-
+	
       <button class="like">🤍</button>
 
       <img src="img/chocolate.jpg" alt="Mojadito de 3 leches sabor chocolate">
@@ -844,7 +870,7 @@ Precio varía según tamaño y diseño.
     Ideal para cumpleaños infantiles. El diseño y tamaño pueden variar según el pedido.
   </div>
 
-  <div class="precio">Precio según tamaño y diseño</div>
+  <div class="precio">Cotización según tamaño y diseño</div>
 </div>
 
       <div class="postre" data-category="pays">
@@ -947,18 +973,20 @@ Precio varía según tamaño y diseño.
 
    
   <footer class="footer">
-    <div class="iconos">
-      <a href="https://www.facebook.com/profile.php?id=100008977604002" target="_blank">
-        <i class="fab fa-facebook"></i>
-      </a>
+  <div class="iconos">
 
-      <a href="https://wa.me/5218118939426" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-    </div>
+    <a href="https://www.facebook.com/profile.php?id=100008977604002" target="_blank" rel="noopener">
+      <i class="fab fa-facebook"></i>
+    </a>
 
-    <p class="copy">© 2026 Dulce Antojo</p>
-  </footer>
+    <a href="https://api.whatsapp.com/send?phone=528118939426&text=Hola,%20vengo%20del%20menú%20Dulce%20Antojo%20🍰" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+  </div>
+
+  <p class="copy">© 2026 Dulce Antojo</p>
+</footer>
 
     <div class="mini-bot">
   <button class="mini-btn">💬</button>
@@ -1092,6 +1120,29 @@ cards.forEach((card, i) => {
       miniBot.classList.toggle('abierto');
     });
   }
+
+  // Ocultar bot al llegar al footer
+const bot = document.querySelector('.mini-bot');
+const footer = document.querySelector('.footer');
+
+if (bot && footer) {
+
+  window.addEventListener('scroll', () => {
+
+    const footerTop = footer.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (footerTop < screenHeight) {
+      bot.style.opacity = "0";
+      bot.style.pointerEvents = "none";
+    } else {
+      bot.style.opacity = "1";
+      bot.style.pointerEvents = "auto";
+    }
+
+  });
+
+}
 
   // Filtros + contador
   const filtros = document.querySelectorAll(".filtro");
