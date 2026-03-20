@@ -29,6 +29,17 @@
   z-index: 500;  
 }
 
+.precio-variante {
+  font-size: 0.85rem;
+  color: #ff8c42;
+  background: rgba(255, 140, 66, 0.1);
+  padding: 6px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
 
 .modo-btn:active {
   transform: translateY(-50%) scale(0.9);
@@ -88,20 +99,6 @@ transition: background 0.4s ease, color 0.4s ease;
   box-sizing: border-box;
 }
 
-    .postre {
-  background: linear-gradient(180deg, #ffffff, #fff6ee);
-  border: 1px solid rgba(255, 196, 122, 0.45);
-  backdrop-filter: blur(2px);
-  padding: 12px;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.14);
-  position: relative;
-  transition: 
-    transform .25s ease, 
-    box-shadow .25s ease, 
-    border-color .25s ease,
-    background 0.4s ease;
-}
-
    .filtro-visual {
   position: fixed;
   inset: 0;
@@ -129,13 +126,14 @@ body.descanso .filtro-visual {
 }
 
     .postre img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 10px;
-      transition: transform .2s ease;
-    }
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  object-fit: cover; 
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: transform .2s ease;
+  background: #fff; 
+}
     
     .postre img:active {
   transform: scale(0.98);
@@ -617,12 +615,31 @@ margin: 0 auto 10px;
   transform: scale(0.92);
 }
 
-.postre {
-  opacity: 0;
-  transform: translateY(40px) scale(0.9);
-  transition: 
-    opacity 0.6s ease,
-    transform 0.6s cubic-bezier(.22,1,.36,1);
+ .postre {
+background: linear-gradient(180deg, #ffffff, #fff6ee);
+border: 1px solid rgba(255, 196, 122, 0.45);
+backdrop-filter: blur(2px);
+padding: 12px;
+box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+position: relative;
+transition:
+transform .25s ease,
+box-shadow .25s ease,
+border-color .25s ease,
+background 0.4s ease;
+opacity: 0;
+transform: translateY(40px) scale(0.9);
+transition:
+opacity 0.6s ease,
+transform 0.6s cubic-bezier(.22,1,.36,1);
+background: #fff;
+border-radius: 16px;
+padding: 12px;
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 100%;
 }
 
 .postre.mostrar {
@@ -713,13 +730,15 @@ margin: 0 auto 10px;
 
 .grid-postres {
   display: grid;
-  grid-template-columns: 1fr;   /* 📱 1 columna en celular */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
+  margin-bottom: 40px;
+  align-items: stretch;
 }
 
 @media (min-width: 768px) {
   .grid-postres {
-    grid-template-columns: repeat(2, 1fr);  /* 💻 2 columnas en compu */
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
 </style>
@@ -764,12 +783,33 @@ margin: 0 auto 10px;
 
    <div class="grid-postres oculto-inicial">
 
+     <div class="postre" data-category="ocasiones">
+     <span class="badge personalizado">🎨 Personalizado</span>
+  <button class="like">🤍</button>
+
+  <img src="img/coral.png" alt="Pastel temático Caroline">
+
+  <h3>Pastel Temático caroline</h3>
+
+  <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+  <div class="descripcion">
+    Pastel temático en tonos morados con diseño de Coraline, detalles únicos y acabado en crema.
+✨ Misterioso, original y súper delicioso.
+  </div>
+
+  <div class="precio-variante">Precio variable</div>
+</div>    
+
+
       <div class="postre" data-category="pastelitos">
       <span class="badge">🔥 Top</span>
       
       <button class="like">🤍</button>
 
-      <img src="img/nuez.jpg" alt="Mojadito Dulce De Leche">
+      <img src="img/dulce.png" alt="Mojadito Dulce De Leche">
       <h3>Mojadito de dulce de leche</h3>
 
       <button class="toggle-desc">
@@ -786,7 +826,7 @@ margin: 0 auto 10px;
      <div class="postre" data-category="ocasiones">
   <button class="like">🤍</button>
 
-  <img src="img/mango.jpg" alt="Rollo de mango de tres leches">
+  <img src="img/mango.png" alt="Rollo de mango de tres leches">
   <h3>Rollo de mango</h3>
 
   <button class="toggle-desc">
@@ -805,7 +845,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
   
      <button class="like">🤍</button>
 
-  <img src="img/miki.jpg" alt="Pastel personalizado Mini Mickey">
+  <img src="img/miki.png" alt="Pastel personalizado Mini Mickey">
   <h3>Pastel personalizado Hello Kitty</h3>
 
   <button class="toggle-desc">
@@ -816,13 +856,13 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
     Pastel personalizado estilo Hello Kitty, elaborado con pan de vainilla suave y decorado con betún chantillí en tonos rosa. Incluye topper temático.
   </div>
 
-  <div class="precio">Cotización según tamaño y diseño</div>
+  <div class="precio-variante">Precio variable</div>
 </div>      
 
       <div class="postre" data-category="pastelitos">
   <span class="badge especial">⭐ Especialidad de la casa</span>
   <button class="like">🤍</button>
-  <img src="img/zanahoria.jpg" alt="Rebanada de Zanahoria">
+  <img src="img/zanahoria.png" alt="Rebanada de Zanahoria">
   <h3>Rebanada de zanahoria</h3>
 
   <button class="toggle-desc">
@@ -841,7 +881,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
 	
       <button class="like">🤍</button>
 
-      <img src="img/chocolate.jpg" alt="Mojadito de 3 leches sabor chocolate">
+      <img src="img/chocolate.png" alt="Mojadito de 3 leches sabor chocolate">
       <h3>Mojadito de chocolate</h3>
 
       <button class="toggle-desc">
@@ -860,7 +900,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
      <span class="badge personalizado">🎨 Personalizado</span>
   <button class="like">🤍</button>
 
-  <img src="img/bob.jpg" alt="Pastel temático Bob Esponja">
+  <img src="img/bob.png" alt="Pastel temático Bob Esponja">
 
   <h3>Pastel temático Bob Esponja</h3>
 
@@ -873,7 +913,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
     Ideal para cumpleaños infantiles. El diseño y tamaño pueden variar según el pedido.
   </div>
 
-  <div class="precio">Cotización según tamaño y diseño</div>
+  <div class="precio-variante">Precio variable</div>
 </div>
 
       <div class="postre" data-category="pays">
@@ -881,7 +921,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
  
   <button class="like">🤍</button>
 
-  <img src="img/tortuga.jpg" alt="Pay tortuga con chocolate, nuez y caramelo">
+  <img src="img/tortuga.png" alt="Pay tortuga con chocolate, nuez y caramelo">
   <h3>Pay tortuga</h3>
 
   <button class="toggle-desc">
@@ -892,13 +932,13 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
     Pay cremosito con base crujiente, chocolate, nuez tostada y salsa de caramelo. Un clásico irresistible.
   </div>
 
-  <div class="precio">Precio variante</div>
+  <div class="precio-variante">Precio variable</div>
 </div>
 
       <div class="postre" data-category="pastelitos">
      <button class="like">🤍</button>
 
-  <img src="img/fresa.jpg" alt="Mojadito de 3 leches con fresa">
+  <img src="img/fresa.png" alt="Mojadito de 3 leches con fresa">
   <h3>Mojadito de fresa</h3>
 
      <button class="toggle-desc">
@@ -916,7 +956,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
       <div class="postre" data-category="pastelitos">
      <button class="like">🤍</button>
 
-  <img src="img/oreo.jpg" alt="Mojadito de 3 leches de oreo">
+  <img src="img/oreo.png" alt="Mojadito de 3 leches de oreo">
   <h3>Mojadito de oreo</h3>
 
      <button class="toggle-desc">
@@ -933,7 +973,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
       <div class="postre" data-category="pays">
     <button class="like">🤍</button>
 
-  <img src="img/decorado1.jpg" alt="Pay de Fresa">
+  <img src="img/grande.png" alt="Pay de Fresa">
   <h3>Pay de queso</h3>
 
      <button class="toggle-desc">
@@ -950,7 +990,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
    <div class="postre" data-category="pays"> 
    <button class="like">🤍</button>
 
-  <img src="img/decorado.jpg" alt="Pay de Fresa">
+  <img src="img/pequeño.png" alt="Pay de Fresa">
   <h3>Pay de queso</h3>
 
      <button class="toggle-desc">
