@@ -10,12 +10,12 @@
   --naranja: #c97a2b;  
   --naranja2: #ffb703; 
   --fondo: #fff3e8;    
-    }
+ }
 
     .modo-btn {
 position: fixed;
 right: 16px;
-top: 25%;
+top: 22%;
 transform: translateY(-50%);
 background: white;
 border: none;
@@ -27,8 +27,10 @@ font-size: 18px;
 box-shadow: 0 4px 10px rgba(0,0,0,.15);
 transition: transform 0.2s ease;
 z-index: 500;
+backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.3);
 }
-
 
 .precio-variante {
   font-size: 0.85rem;
@@ -51,7 +53,7 @@ margin: 0;
 font-family: system-ui, -apple-system, Arial, sans-serif;
 background: var(--fondo);
 color: var(--texto);
-padding-top: 72px;
+padding-top: 78px;
 transition: background 0.4s ease, color 0.4s ease;
 }
 
@@ -517,76 +519,6 @@ margin: 0 auto 10px;
   }
 }
 
-.mini-bot {
-  position: fixed;
-  right: 16px;
-  bottom: 0;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  transition: opacity .25s ease;
-}
-
-.mini-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: none;
-  background: #25D366;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,.25);
-  transition: transform .2s ease;
-}
-
-.mini-btn:active {
-  transform: scale(0.92);
-}
-
-.mini-msg {
-  max-width: 260px;
-  background: #fff;
-  color: #333;
-  padding: 12px 14px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.25);
-  font-size: .9rem;
-  line-height: 1.4;
-  opacity: 0;
-  transform: translateY(10px) scale(.95);
-  pointer-events: none;
-  transition: all .25s ease;
-}
-
-.mini-bot.abierto .mini-msg {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-.mini-cta {
-  margin-top: 8px;
-  background: #25D366;
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: .8rem;
-  text-align: center;
-  cursor: pointer;
-}
-
-@keyframes latido {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-
-.mini-btn {
-  animation: latido 2.2s infinite ease-in-out;
-}
-
   .filtros {
   display: flex;
   gap: 10px;
@@ -731,7 +663,7 @@ height: 100%;
 
 .grid-postres {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-bottom: 40px;
   align-items: stretch;
@@ -742,7 +674,43 @@ height: 100%;
     grid-template-columns: repeat(3, 1fr); 
   }
 }
-</style>
+
+#promo-banner {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  text-align: center;
+
+  background: linear-gradient(90deg, #f8b4b4, #ffb347);
+  color: #4a1f1f;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  position: relative; /* 👈 importante */
+  z-index: 1;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* texto animación */
+#promo-text {
+  transition: opacity 0.3s ease;
+}
+
+/* botón cerrar */
+#close-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-weight: bold;
+
+  background: rgba(0,0,0,0.05);
+  border-radius: 50%;
+  padding: 4px 8px;
+}
+ </style>
 </head>
 
 <body>
@@ -758,6 +726,11 @@ height: 100%;
       🍰 Abrir menú
     </button>
   </div>
+</div>
+
+ <div id="promo-banner">
+  <span id="promo-text"></span>
+  <span id="close-btn">✕</span>
 </div>
 
    <header>
@@ -861,7 +834,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
 </div>      
 
       <div class="postre" data-category="pastelitos">
-  <span class="badge especial">⭐ Especialidad de la casa</span>
+  <span class="badge especial">⭐ Top</span>
   <button class="like">🤍</button>
   <img src="img/zanahoria.png" alt="Rebanada de Zanahoria">
   <h3>Rebanada de zanahoria</h3>
@@ -1030,19 +1003,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
   </div>
 
   <p class="copy">© 2026 Dulce Antojo</p>
-</footer>
-
-    <div class="mini-bot">
-  <button class="mini-btn">💬</button>
-  <div class="mini-msg">
-    💛 Horneamos 1 vez por semana <br>
-    Cotizaciones sin compromiso <br>
-    Pasteles a tu gusto y presupuesto
-    <div class="mini-cta" onclick="window.open('https://wa.me/5218118939426','_blank')">
-      👉 Escríbenos por WhatsApp
-    </div>
-  </div>
-</div>
+</footer> 
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>  
@@ -1156,38 +1117,6 @@ cards.forEach((card, i) => {
     });
   }
 
-  // Mini bot
-  const miniBot = document.querySelector('.mini-bot');
-  const miniBtn = document.querySelector('.mini-btn');
-  if (miniBot && miniBtn) {
-    miniBtn.addEventListener('click', () => {
-      miniBot.classList.toggle('abierto');
-    });
-  }
-
-  // Ocultar bot al llegar al footer
-const bot = document.querySelector('.mini-bot');
-const footer = document.querySelector('.footer');
-
-if (bot && footer) {
-
-  window.addEventListener('scroll', () => {
-
-    const footerTop = footer.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
-
-    if (footerTop < screenHeight) {
-      bot.style.opacity = "0";
-      bot.style.pointerEvents = "none";
-    } else {
-      bot.style.opacity = "1";
-      bot.style.pointerEvents = "auto";
-    }
-
-  });
-
-}
-
   // Filtros + contador
   const filtros = document.querySelectorAll(".filtro");
   const postres = document.querySelectorAll(".postre");
@@ -1260,6 +1189,42 @@ window.addEventListener("load", () => {
   } else {
     header.classList.remove("scrolled");
   }
+});
+
+// banner
+document.addEventListener("DOMContentLoaded", () => {
+  const text = document.getElementById("promo-text");
+  const closeBtn = document.getElementById("close-btn");
+  const banner = document.getElementById("promo-banner");
+
+  const mensajes = [
+    "Producción semanal limitada. El menú varía cada semana según disponibilidad.",
+    "Tu pastel merece cariño y dedicación. Agenda con anticipación.",
+    "Disponibilidad limitada cada semana. Asegura tu pedido con tiempo."
+  ];
+
+  let index = 0;
+
+  // mostrar primer mensaje
+  text.textContent = mensajes[0];
+
+  function cambiarMensaje() {
+    text.style.opacity = 0;
+
+    setTimeout(() => {
+      index = (index + 1) % mensajes.length;
+      text.textContent = mensajes[index];
+      text.style.opacity = 1;
+    }, 300);
+  }
+
+  // cambiar cada 7 segundos
+  setInterval(cambiarMensaje, 7000);
+
+  // cerrar banner
+  closeBtn.addEventListener("click", () => {
+    banner.style.display = "none";
+  });
 });
 </script>
  
