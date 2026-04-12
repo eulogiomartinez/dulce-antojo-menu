@@ -735,6 +735,27 @@ height: 100%;
   border-radius: 50%;
   padding: 4px 8px;
 }
+
+.btn-cotizar {
+    background-color: #f7b12d; /* El naranja de tu logo/menú */
+    color: white;              /* Texto en blanco para que resalte */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 90%;                /* Para que no toque los bordes de la tarjeta */
+    margin: 10px auto;         /* Lo centra y le da aire arriba */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+.btn-cotizar:hover {
+    background-color: #d98e1a; /* Un tono más oscuro al tocarlo */
+}
  </style>
 </head>
 
@@ -782,13 +803,32 @@ height: 100%;
 
    <div class="grid-postres oculto-inicial">
 
+    <div class="postre" data-category="ocasiones">
+  <button class="like">🤍</button>
+
+  <img src="img/coco.png" alt="Mechudo de coco">
+  <h3>Mechudo de coco</h3>
+
+  <button class="toggle-desc">
+    Detalles <span class="flecha">🔽</span>
+  </button>
+
+  <div class="descripcion">
+ Pastel de vainilla con relleno de fresa, cubierto con chantilly y coco natural.
+ Para 8 personas.
+  </div>
+
+  <div class="precio">$420</div>
+</div>
+
+
      <div class="postre" data-category="ocasiones">
      <span class="badge personalizado">🎨 Personalizado</span>
   <button class="like">🤍</button>
 
   <img src="img/coral.png" alt="Pastel temático Caroline">
 
-  <h3>Pastel Temático caroline</h3>
+  <h3>Pastel Temático coraline</h3>
 
   <button class="toggle-desc">
     Detalles <span class="flecha">🔽</span>
@@ -799,7 +839,10 @@ height: 100%;
 ✨ Misterioso, original y súper delicioso.
   </div>
 
-  <div class="precio-variante">Precio variable</div>
+  <button class="btn-menu btn-cotizar" data-nombre="Pastel Temático Coraline">
+    💬 Cotizar por WhatsApp
+</button>
+
 </div>    
 
 
@@ -855,7 +898,10 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
     Pastel personalizado estilo Hello Kitty, elaborado con pan de vainilla suave y decorado con betún chantillí en tonos rosa. Incluye topper temático.
   </div>
 
-  <div class="precio-variante">Precio variable</div>
+  <button class="btn-menu btn-cotizar" data-nombre="Pastel Temático Hello Kitty">
+    💬 Cotizar por WhatsApp
+</button>
+
 </div>      
 
       <div class="postre" data-category="pastelitos">
@@ -911,8 +957,12 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
     Pastel de pan sabor vainilla tradicional, con betún chantilly, decoración temática de Bob Esponja.
     Ideal para cumpleaños infantiles. El diseño y tamaño pueden variar según el pedido.
   </div>
+  
+   <button class="btn-menu btn-cotizar" data-nombre="Pastel Temático Bob Esponja">
+    💬 Cotizar por WhatsApp
+</button>
 
-  <div class="precio-variante">Precio variable</div>
+
 </div>
 
       <div class="postre" data-category="pays">
@@ -1032,6 +1082,25 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>  
+   // Configuraciones
+const TELEFONO = "528118939426"; 
+
+// Escuchamos los clics en todo el documento
+document.addEventListener('click', function (event) {
+    // Si el elemento clickeado tiene la clase 'btn-cotizar'
+    if (event.target.classList.contains('btn-cotizar')) {
+        
+        const nombrePastel = event.target.getAttribute('data-nombre');
+        const mensaje = `Hola! Me interesa una cotización para el ${nombrePastel}`;
+        
+        // Creamos la URL final
+        const url = `https://wa.me/${TELEFONO}?text=${encodeURIComponent(mensaje)}`;
+        
+        // Abrimos en una pestaña nueva
+        window.open(url, '_blank');
+    }
+});
+
     // descanso visual
      document.addEventListener("DOMContentLoaded", () => {   
     const toggleModo = document.getElementById("modo-toggle");
