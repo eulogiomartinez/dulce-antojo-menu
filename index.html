@@ -6,758 +6,17 @@
 
   <title>Dulce Antojo | Postres caseros</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Postres caseros en Monterrey | Dulce Antojo">
+<meta name="description" content="Postres caseros en Monterrey | Dulce Antojo">
 
-  <!-- Open Graph -->
-  <meta property="og:image" content="https://eulogiomartinez.github.io/dulce-antojo-menu/img/preview.png">
+<meta property="og:title" content="Dulce Antojo | Postres caseros">
+<meta property="og:description" content="Postres caseros en Monterrey | Dulce Antojo">
+<meta property="og:url" content="https://eulogiomartinez.github.io/dulce-antojo-menu/">
+<meta property="og:image" content="https://eulogiomartinez.github.io/dulce-antojo-menu/img/preview.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
-  <!-- Favicon -->
-  <link rel="icon" href="img/logo.png">
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-   <style>
-    :root {
-  --naranja: #c97a2b;  
-  --naranja2: #ffb703; 
-  --fondo: #fff3e8;    
- }
-
-    .modo-btn {
-position: fixed;
-right: 16px;
-top: 22%;
-transform: translateY(-50%);
-background: white;
-border: none;
-border-radius: 50%;
-width: 38px;
-height: 38px;
-cursor: pointer;
-font-size: 18px;
-box-shadow: 0 4px 10px rgba(0,0,0,.15);
-transition: transform 0.2s ease;
-z-index: 500;
-backdrop-filter: blur(8px);
-  background: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.3);
-}
-
-@media (min-width: 768px) {
-  #modo-toggle {
-    top: 180px;
-  }
-}
-
-.precio-variante {
-  font-size: 0.85rem;
-  color: #ff8c42;
-  background: rgba(255, 140, 66, 0.1);
-  padding: 6px 10px;
-  border-radius: 999px;
-  display: inline-block;
-  margin-top: 4px;
-  font-weight: 600;
-}
-
-
-.modo-btn:active {
-  transform: translateY(-50%) scale(0.9);
-}
-
-  body {
-margin: 0;
-font-family: system-ui, -apple-system, Arial, sans-serif;
-background: var(--fondo);
-color: var(--texto);
-padding-top: 78px;
-transition: background 0.4s ease, color 0.4s ease;
-}
-
-    header {
-      background: linear-gradient(135deg, var(--naranja), var(--naranja2));
-      color: white;
-      padding: 24px 16px;
-      text-align: center;
-      font-size: 1.3rem;
-      font-weight: bold;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      justify-content: center;
-    }
-
-    header.scrolled {
-  background: rgba(201, 122, 43, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
-
-    .logo-header {
-  position: absolute;
-  left: 16px; 
-  top: 50%;
-  transform: translateY(-50%);
-  width: 90px; 
-  height: auto;
-}
-
-    .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-    html, body {
-  overflow-x: hidden;
-}
-
-   * {
-  box-sizing: border-box;
-}
-
-   .filtro-visual {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 190, 150, 0.20);
-  pointer-events: none;
-  z-index: 900;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-body.descanso .filtro-visual {
-  opacity: 1;
-}
  
-.badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #ffb703;
-  color: #7a3f00;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-    .postre img {
-  width: 100%;
-  aspect-ratio: 1 / 1; 
-  object-fit: cover; 
-  border-radius: 12px;
-  margin-bottom: 10px;
-  transition: transform .2s ease;
-  background: #fff; 
-}
-    
-    .postre img:active {
-  transform: scale(0.98);
-    }
-
-      .postre h3 {
-  margin: 6px 0 4px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.3;
-}    
- 
-    .postre p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #666;
-     }
-
-    .postre:hover {
-  transform: translateY(-6px) scale(1.01);
-  border-color: #ffb347;
-  box-shadow:
-    0 18px 40px rgba(0,0,0,0.22),
-    0 14px 30px rgba(255, 179, 71, 0.25);
-}   
-
-   .postre:last-child {
-  margin-bottom: 40px;
-}
-
-    .precio {
-      margin-top: 10px;
-      font-weight: bold;
-      color: var(--naranja);
-      font-size: 1.2rem;
-    }
-
-    .boton {
-      display: inline-block;
-      margin-top: 12px;
-      background: var(--naranja);
-      color: white;
-      padding: 10px 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-
-    .boton:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    }
-
-   .footer {
-  background: #ffd6e7;
-  color: #7a1f3d;
-  text-align: center;
-  padding: 40px 16px;
-  margin: 0;
-  z-index: 9998;
-  width: 100%;
-}
-
- .menu {
-  flex: 1;
-}
-
-.iconos a {
-  font-size: 34px;
-  padding: 10px;
-  margin: 0 12px;
-  display: inline-block;
-}
-
-.fa-facebook { color: #1877F2; }
-.fa-whatsapp { color: #25D366; }
-
-#lightbox {
-  position: fixed;
-  inset: 0;
-  background: #ffd6e7;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-}
-
-.lightbox-card {
-  background: #fff;
-  padding: 12px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.25);
-}
-
-#lightbox-img {
-  max-width: 92vw;
-  max-height: 85vh;
-  border-radius: 12px;
-  display: block;
-}
-
- .btn-whatsapp {
-  position: fixed;
-  right: 16px;
-  bottom: 5px;
-  z-index: 9999;
-
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25D366;
-  color: white;
-
-  display: grid;
-  place-items: center;
-
-  font-size: 1.6rem;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
-}
-
-  .descripcion {
-  display: none;
-  margin-top: 10px;
-  padding: 14px 16px;
-
-  background: linear-gradient(
-    180deg,
-    #ffeaf3,
-    #ffd6e7
-  );
-
-  border-radius: 12px;
-
-  border: 1px solid rgba(255, 170, 200, 0.35);
-
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.toggle-desc {
-  background: none;
-  border: none;
-  color: #ff5aa5;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.flecha {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-  .postre.abierto .descripcion {
-  display: block;
-  animation: abrirDesc 0.25s ease;
-}
-
-@keyframes abrirDesc {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.postre.abierto .flecha {
-  transform: rotate(180deg);
-}
-
-.like {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: white;
-  border: none;
-  border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
-}
-
-.like.activo {
-  background: #ffe4e9;
-  animation: popLike .25s ease;
-}
-@keyframes popLike {
-  0% { transform: scale(.9); }
-  70% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.like.activo::after {
-  content: "✨";
-  position: absolute;
-  right: -6px;
-  top: -6px;
-  font-size: 12px;
-  animation: sparkle .5s ease-out;
-}
-
-@keyframes sparkle {
-  from { transform: scale(.5); opacity: 1; }
-  to   { transform: scale(1.2); opacity: 0; }
-}
-
-.bienvenida {
-  position: fixed;
-  inset: 0;
-  background: #ffd6e7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  min-height: 100dvh;
-  width: 100%;
-  transition: background .6s ease, opacity .55s ease, transform .55s ease;
-}
-
-.bienvenida.cerrando {
-  background: transparent;
-  opacity: 0;
-  transform: scale(.85);
-}
-
-.bienvenida .logo {
-width: 120px;
-margin: 0 auto 10px;
-display: block;
-margin: 0 auto 10px;
-}
-
-.bienvenida-card {
-  background: #fff;
-  padding: 28px 22px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  animation: pop .6s ease;
-}
-
-.bienvenida h1 {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #c97a2b;
-}
-
-.bienvenida h2 {
-  margin: 6px 0 16px;
-  font-size: 1.6rem;
-  color: #111;
-  transition: color 0.3s ease;
-}
-
-   .bienvenida h2 span {
-  color: #e11d48;
-  font-weight: bold;
-}
-
-.btn-abrir {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #ffb703, #c97a2b);
-  border: none;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 6px 14px rgba(0,0,0,.25);
-  animation: glow 7s infinite;
-}
-
-.btn-abrir::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,.6),
-    transparent
-  );
-  transform: skewX(-20deg);
-  animation: shimmer 7s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    left: -120%;
-  }
-
-  40% {
-    left: 120%;
-  }
-
-  100% {
-    left: 120%;
-  }
-}
-
- @keyframes glow {
-
-  0%{
-    box-shadow: 0 6px 14px rgba(0,0,0,.25);
-  }
-
-  10%{
-    box-shadow:
-      0 6px 14px rgba(0,0,0,.25),
-      0 0 18px rgba(255,183,3,.6);
-  }
-
-  20%{
-    box-shadow: 0 6px 14px rgba(0,0,0,.25);
-  }
-
-  100%{
-    box-shadow: 0 6px 14px rgba(0,0,0,.25);
-  }
-}
-
-.btn-abrir:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.3);
-}
-
-@keyframes pop {
-  from { transform: scale(.85); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
-
-   @keyframes flashFiltro {
-
-  0%{
-    box-shadow: 0 10px 25px rgba(255,165,0,0.35);
-  }
-
-  50%{
-    box-shadow:
-      0 10px 25px rgba(255,165,0,0.35),
-      0 0 18px rgba(255,165,0,0.7);
-  }
-
-  100%{
-    box-shadow: 0 10px 25px rgba(255,165,0,0.35);
-  }
-
-}
-
-.bienvenida.cerrando {
-  animation: fadeZoomOut .5s ease forwards;
-}
-
-@keyframes fadeZoomOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.95);
-    filter: blur(4px);
-  }
-}
-
-  .filtros {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin: 14px 0 20px;
-  flex-wrap: wrap;
-}
-
-.filtro {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid #f59e0b;
-  background: white;
-  color: #c97a2b;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-  .filtro.activo {
-  transform: translateY(-1px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(255, 165, 0, 0.35);
-  animation: flashFiltro 0.25s ease;
-}
-
-  .filtro:active {
-  transform: scale(0.92);
-}
-
- .postre {
-background: linear-gradient(180deg, #ffffff, #fff6ee);
-border: 1px solid rgba(255, 196, 122, 0.45);
-backdrop-filter: blur(2px);
-padding: 12px;
-box-shadow: 0 10px 22px rgba(0,0,0,0.14);
-position: relative;
-transition:
-transform .25s ease,
-box-shadow .25s ease,
-border-color .25s ease,
-background 0.4s ease;
-opacity: 0;
-transform: translateY(40px) scale(0.9);
-transition:
-opacity 0.6s ease,
-transform 0.6s cubic-bezier(.22,1,.36,1);
-background: #fff;
-border-radius: 16px;
-padding: 12px;
-text-align: center;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-height: 100%;
-}
-
-.postre.mostrar {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.postre.oculto {
-  pointer-events: none; /* sigue en el DOM pero no clickeable */
-  opacity: 0;
-  transform: translateY(14px) scale(0.95);
-}
-
- .postre .badge.especial{
-  background: linear-gradient(135deg, #f59e0b, #ef4444);
-  color: #fff;
-  font-weight: 700;
-}
-
-.postre:has(.badge.especial){
-  border: 2px solid rgba(245, 158, 11, 0.35);
-}
-
-.postre:has(.badge.especial):hover{
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 18px 40px rgba(245, 158, 11, 0.25);
-}
-
-.contador {
-  margin: 10px 0 18px;
-  font-size: .95rem;
-  color: #7a4a2e;
-  opacity: .9;
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-.contador.animar {
-  transform: translateY(-4px);
-  opacity: 1;
-}
-
-#contador-num {
-  font-weight: 700;
-  color: #ff9f1c;
-}
-
-.filtro.especial {
-  background: linear-gradient(135deg, #ffb703, #ff7a00);
-  color: #fff;
-  font-weight: 700;
-  box-shadow: 0 8px 20px rgba(255, 179, 71, 0.45);
-  border: none;
-}
-
-.filtro.especial:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(255, 179, 71, 0.6);
-}
-
-@keyframes brilloEspecial {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.2); }
-}
-
-.badge.personalizado {
-  background: linear-gradient(135deg, #ff5f9e, #ff9f43);
-  color: #fff;
-}
-
-/* Reserva el espacio de la imagen para que no se desacomoden */
-.postre img {
-  width: 100%;
-  aspect-ratio: 1 / 1;   /* puedes probar 4 / 5 si tus fotos son más altas */
-  object-fit: cover;
-  display: block;
-}
-
-/* Evita saltos raros durante la animación */
-.postre {
-  will-change: transform, opacity;
-}
-
-.oculto-inicial .postre {
-  opacity: 0;
-  transform: translateY(14px) scale(0.95);
-  pointer-events: none;
-}
-
-.grid-postres {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
-  align-items: stretch;
-}
-
-@media (min-width: 768px) {
-  .grid-postres {
-    grid-template-columns: repeat(3, 1fr); 
-  }
-}
-
-#promo-banner {
-  width: 100%;
-  padding: 12px 40px 12px 12px;
-  text-align: center;
-
-  background: linear-gradient(90deg, #f8b4b4, #ffb347);
-  color: #4a1f1f;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-
-  position: relative; /* 👈 importante */
-  z-index: 1;
-
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-/* texto animación */
-#promo-text {
-  transition: opacity 0.3s ease;
-}
-
-/* botón cerrar */
-#close-btn {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-weight: bold;
-
-  background: rgba(0,0,0,0.05);
-  border-radius: 50%;
-  padding: 4px 8px;
-}
-
-.btn-cotizar {
-    background-color: #f7b12d; /* El naranja de tu logo/menú */
-    color: white;              /* Texto en blanco para que resalte */
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 90%;                /* Para que no toque los bordes de la tarjeta */
-    margin: 10px auto;         /* Lo centra y le da aire arriba */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: background 0.3s;
-}
-
-.btn-cotizar:hover {
-    background-color: #d98e1a; /* Un tono más oscuro al tocarlo */
-}
- </style>
-</head>
+   </head>
 
 <body>
 
@@ -786,6 +45,11 @@ height: 100%;
  
       <button id="modo-toggle" class="modo-btn">🌙</button>
 
+      <div class="buscador-container">
+    <i class="fa-solid fa-magnifying-glass icono-lupa"></i>
+    <input type="text" id="input-busqueda" placeholder="Buscar mi postre favorito...">
+</div>
+
        <div class="filtros">
   <button class="filtro activo" data-filtro="todos">Todos</button>
   <button class="filtro" data-filtro="pastelitos">Pastelitos</button>
@@ -801,9 +65,13 @@ height: 100%;
 
   <section class="menu">
 
+  <p id="mensaje-ia" style="color: orange; text-align: center;"></p>
+
+
    <div class="grid-postres oculto-inicial">
 
-    <div class="postre" data-category="ocasiones">
+    
+    <div class="postre" data-category="ocasiones" data-tags="vainilla fresa blanco coco fruta tradicional suave">
   <button class="like">🤍</button>
 
   <img src="img/coco.png" alt="Mechudo de coco">
@@ -822,7 +90,7 @@ height: 100%;
 </div>
 
 
-     <div class="postre" data-category="ocasiones">
+     <div class="postre" data-category="ocasiones" data-tags="pelicula azul botones especial regalo fans cine oscuro">
      <span class="badge personalizado">🎨 Personalizado</span>
   <button class="like">🤍</button>
 
@@ -846,7 +114,7 @@ height: 100%;
 </div>    
 
 
-      <div class="postre" data-category="pastelitos">
+      <div class="postre" data-category="pastelitos" data-tags="cajeta dulce tradicional suave humedo mojado individual">
       <span class="badge">🔥 Top</span>
       
       <button class="like">🤍</button>
@@ -865,7 +133,7 @@ height: 100%;
       <div class="precio">$80</div>
     </div>
 
-     <div class="postre" data-category="ocasiones">
+     <div class="postre" data-category="ocasiones" data-tags="fruta fresco temporada mango amarillo ligero natural suave">
   <button class="like">🤍</button>
 
   <img src="img/mango.png" alt="Rollo de mango de tres leches">
@@ -882,7 +150,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
   <div class="precio">$450</div>
 </div>
   
-      <div class="postre" data-category="ocasiones">
+      <div class="postre" data-category="ocasiones" data-tags="niñas rosa regalo tierno personajes kitti kitty moño sanrio">
        <span class="badge personalizado">🎨 Personalizado</span>
   
      <button class="like">🤍</button>
@@ -904,7 +172,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
 
 </div>      
 
-      <div class="postre" data-category="pastelitos">
+      <div class="postre" data-category="pastelitos" data-tags="especial nuez saludable canela zanahoria clasico porcion individual">
   <span class="badge especial">⭐ Top</span>
   <button class="like">🤍</button>
   <img src="img/zanahoria.png" alt="Rebanada de Zanahoria">
@@ -921,7 +189,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
   <div class="precio">$65</div>
 </div> 
 
-      <div class="postre" data-category="pastelitos">
+      <div class="postre" data-category="pastelitos" data-tags="cacao chocolate oscuro humedo mojado chispas individual empalagoso intenso dulce">
       <span class="badge">🔥 Nuevo</span>
 	
       <button class="like">🤍</button>
@@ -941,7 +209,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
       <div class="precio">$70</div>
     </div>
 
-     <div class="postre" data-category="ocasiones">
+     <div class="postre" data-category="ocasiones" data-tags="niños fiesta infantil amarillo personajes caricatura piñata">
      <span class="badge personalizado">🎨 Personalizado</span>
   <button class="like">🤍</button>
 
@@ -962,10 +230,9 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
     💬 Cotizar por WhatsApp
 </button>
 
-
 </div>
 
-      <div class="postre" data-category="pays">
+      <div class="postre" data-category="pays" data-tags="nuez caramelo chocolate crujiente pay especial premium">
       <span class="badge personalizado">🎨 Personalizado</span>
  
   <button class="like">🤍</button>
@@ -984,7 +251,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
   <div class="precio-variante">Precio variable</div>
 </div>
 
-      <div class="postre" data-category="pastelitos">
+      <div class="postre" data-category="pastelitos" data-tags="fruta rosa fresa natural humedo mojado individual ligero mermelada">
      <button class="like">🤍</button>
 
   <img src="img/fresa.png" alt="Mojadito de 3 leches con fresa">
@@ -1002,7 +269,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
   <div class="precio">$70</div>
 </div>
 
-      <div class="postre" data-category="pastelitos">
+      <div class="postre" data-category="pastelitos" data-tags="galleta oreo chocolate blanco negro humedo mojado individual charola">
      <button class="like">🤍</button>
 
   <img src="img/oreo.png" alt="Mojadito de 3 leches de oreo">
@@ -1019,7 +286,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
   <div class="precio">$70</div>
 </div>
 
-      <div class="postre" data-category="pays">
+      <div class="postre" data-category="pays" data-tags="queso fresa pay mermelada grande compartir familiar tradicional">
     <button class="like">🤍</button>
 
   <img src="img/grande.png" alt="Pay de Fresa">
@@ -1032,11 +299,11 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
      <div class="descripcion">
     Pay casero decorado con crema Chantilly y fresa natural ideal para compartir.
   </div>
-
+	
   <div class="precio">$350</div>
 </div>
 
-   <div class="postre" data-category="pays"> 
+   <div class="postre" data-category="pays" data-tags="queso fresa pay mermelada chico individual personal postre"> 
    <button class="like">🤍</button>
 
   <img src="img/pequeño.png" alt="Pay de Fresa">
@@ -1054,6 +321,36 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
 </div>
 
  </section>
+
+      <section class="sobre-nosotros" id="seccion-historia">
+  <div class="sobre-nosotros-header" onclick="toggleHistoria()" style="cursor: pointer;">
+    <h2>Sobre Nosotros</h2>
+    <span class="flecha-historia">▼</span>
+  </div>
+
+  <div class="contenido-historia">
+    <p>
+      En <strong>Dulce Antojo</strong>, somos un pequeño emprendimiento familiar. 
+      Nacimos de la pasión por la repostería casera, creando postres y pasteles 
+      artesanales con ingredientes de la mejor calidad. ¡Cada pedido está hecho con amor para endulzar tus momentos especiales!
+    </p>
+  </div>
+</section>
+
+     
+
+     <!-- BLOQUE DE PAGOS — FINAL DEL MENÚ -->
+    <div class="pago-info">
+  <p><strong>Formas de pago</strong></p>
+  
+  <div class="iconos-contenedor">
+    <img src="img/icon-efectivo.png" alt="Efectivo" class="icono-pago">
+    <img src="img/icon-mercado-pago.webp" alt="Mercado Pago" class="icono-pago">
+  </div>
+  
+  <p><strong>Aceptamos efectivo y transferencia (Mercado Pago)</strong></p>
+</div>
+
 
      <div class="filtro-visual"></div>
 
@@ -1081,246 +378,7 @@ Pan vainilla relleno de trozos de mango de temporada com delicioso betún de que
 </footer> 
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script>  
-   // Configuraciones
-const TELEFONO = "528118939426"; 
-
-// Escuchamos los clics en todo el documento
-document.addEventListener('click', function (event) {
-    // Si el elemento clickeado tiene la clase 'btn-cotizar'
-    if (event.target.classList.contains('btn-cotizar')) {
-        
-        const nombrePastel = event.target.getAttribute('data-nombre');
-        const mensaje = `Hola! Me interesa una cotización para el ${nombrePastel}`;
-        
-        // Creamos la URL final
-        const url = `https://wa.me/${TELEFONO}?text=${encodeURIComponent(mensaje)}`;
-        
-        // Abrimos en una pestaña nueva
-        window.open(url, '_blank');
-    }
-});
-
-    // descanso visual
-     document.addEventListener("DOMContentLoaded", () => {   
-    const toggleModo = document.getElementById("modo-toggle");
-
-if (toggleModo) {
-
-  // Estado inicial
-  if (localStorage.getItem("modo") === "descanso") {
-    document.body.classList.add("descanso");
-    toggleModo.textContent = "☀️";
-  } else {
-    toggleModo.textContent = "🌙";
-  }
-
-  toggleModo.addEventListener("click", () => {
-
-    document.body.classList.toggle("descanso");
-
-    if (document.body.classList.contains("descanso")) {
-      localStorage.setItem("modo", "descanso");
-      toggleModo.textContent = "☀️";
-    } else {
-      localStorage.removeItem("modo");
-      toggleModo.textContent = "🌙";
-    }
-
-  });
-}  
- 
-  // Lightbox
-  document.querySelectorAll('.postre img').forEach(img => {
-    img.addEventListener('click', () => {
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox').style.display = 'flex';
-    });
-  });
-  document.getElementById('lightbox')?.addEventListener('click', () => {
-    document.getElementById('lightbox').style.display = 'none';
-  });
-
-  // Toggle descripción
-  document.querySelectorAll('.toggle-desc').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.closest('.postre').classList.toggle('abierto');
-    });
-  });
-
-  // Likes
-  document.querySelectorAll('.postre').forEach((postre, i) => {
-    const btn = postre.querySelector('.like');
-    if (!btn) return;
-
-    if (localStorage.getItem('like_' + i) === '1') {
-      btn.classList.add('activo');
-      btn.textContent = '❤️';
-    }
-
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('activo');
-      const activo = btn.classList.contains('activo');
-      btn.textContent = activo ? '❤️' : '🤍';
-      localStorage.setItem('like_' + i, activo ? '1' : '0');
-    });
-  });
-
-  // Bienvenida
-  const bienvenida = document.getElementById("bienvenida");
-  const btnAbrir = document.getElementById("btn-abrir");
-
-  if (bienvenida && btnAbrir) {
-    document.body.style.overflow = "hidden";
-
-    btnAbrir.addEventListener("click", () => {
-      if (typeof confetti === "function") {
-        confetti({
-          particleCount: 120,
-          spread: 70,
-          colors: ['#ffb703', '#e11d48', '#ffd6e7', '#c97a2b'],
-          origin: { y: 0.2 }
-        });
-      }
-
-      bienvenida.classList.add("cerrando");
-
-      setTimeout(() => {
-        bienvenida.style.display = "none";
-        document.body.style.overflow = "auto";
-
-        const contenedor = document.querySelector('.grid-postres');
-        contenedor.classList.remove('oculto-inicial');
-
-        document.querySelector('.filtro[data-filtro="todos"]')?.click();
-
-        const cards = document.querySelectorAll(".postre");
-
-// Reinicia estado
-cards.forEach(card => {
-  card.classList.remove("mostrar");
-});
-
-// Cascada más notoria
-cards.forEach((card, i) => {
-  setTimeout(() => {
-    card.classList.add("mostrar");
-  }, i * 200);
-});
-   }, 700);
-    });
-  }
-
-  // Filtros + contador
-  const filtros = document.querySelectorAll(".filtro");
-  const postres = document.querySelectorAll(".postre");
-  const contadorWrap = document.getElementById("contador-resultados");
-  const contadorNum = document.getElementById("contador-num");
-
-  filtros.forEach(btn => {
-    btn.addEventListener("click", () => {
-    filtros.forEach(b => b.classList.remove("activo"));
-      btn.classList.add("activo");
-
-      const filtro = btn.dataset.filtro;
-      let visibles = 0;
-
-      let orden = 0;
-
-postres.forEach(postre => {
-  const categoria = postre.dataset.category;
-
-  if (filtro === "todos" || categoria === filtro) {
-    postre.style.display = "block";
-    postre.classList.remove("oculto");
-    postre.classList.remove("mostrar");
-
-    // cascada real solo para visibles
-    setTimeout(() => {
-      postre.classList.add("mostrar");
-    }, orden * 280);
-
-    orden++;
-    visibles++;
-  } else {
-    postre.classList.remove("mostrar");
-    postre.classList.add("oculto");
-    setTimeout(() => postre.style.display = "none", 300);
-  }
-});
-
-      if (contadorNum && contadorWrap) {
-        contadorNum.textContent = visibles;
-        contadorWrap.classList.remove("animar");
-        void contadorWrap.offsetWidth;
-        contadorWrap.classList.add("animar");
-      }
-    });
-  });
-
-});
-
-// ✅ FIX centrado bienvenida en Android
-window.addEventListener("load", () => {
-  const bienvenida = document.getElementById("bienvenida");
-  if (!bienvenida) return;
-
-  bienvenida.style.transform = "translateZ(0)";
-});
-
-         window.addEventListener("scroll", () => {
-  const header = document.querySelector("header");
-  const bienvenida = document.getElementById("bienvenida");
-
-  // Si la bienvenida está visible, no activar blur
-  if (bienvenida && window.getComputedStyle(bienvenida).display !== "none") {
-    header.classList.remove("scrolled");
-    return;
-  }
-
-  if (window.scrollY > 10) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
-
-// banner
-document.addEventListener("DOMContentLoaded", () => {
-  const text = document.getElementById("promo-text");
-  const closeBtn = document.getElementById("close-btn");
-  const banner = document.getElementById("promo-banner");
-
-  const mensajes = [
-    "Producción semanal limitada. El menú varía cada semana según disponibilidad.",
-    "Tu pastel merece cariño y dedicación. Agenda con anticipación.",
-    "Disponibilidad limitada cada semana. Asegura tu pedido con tiempo."
-  ];
-
-  let index = 0;
-
-  // mostrar primer mensaje
-  text.textContent = mensajes[0];
-
-  function cambiarMensaje() {
-    text.style.opacity = 0;
-
-    setTimeout(() => {
-      index = (index + 1) % mensajes.length;
-      text.textContent = mensajes[index];
-      text.style.opacity = 1;
-    }, 300);
-  }
-
-  // cambiar cada 7 segundos
-  setInterval(cambiarMensaje, 7000);
-
-  // cerrar banner
-  closeBtn.addEventListener("click", () => {
-    banner.style.display = "none";
-  });
-});
-</script>
- 
+<script src="script.js"></script>
+  
  </body>
 </html>
